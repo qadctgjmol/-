@@ -442,8 +442,7 @@ def bribery_crime(text_string, lstm_server):
                             briber_person[a] = bribery_position[a]
                         money = ""
                         if store[i] != []:
-                            for j in range(0, len(store[i])):
-                                money = money + " " + str(store[i][j][0]) + " " + str(store[i][j][1]) + " "
+                            money = str(store[i][0][0]) + " " + str(store[i][0][1])
                         accused_person = {}
                         for a in accused_name:
                             if a in accused_position and accused_position[a] is '': # 字典中已有这个key，但是value为空
@@ -469,8 +468,12 @@ def bribery_crime(text_string, lstm_server):
             for p in br_p:
                 if br_p[p] == '':
                     list_temp[s][1][p] = bribery_position[p]
-        if i != -1:   #是总额的话比别人多一项
-            list_temp[i].append('总额')
+        if i != -1:  # 是总额的话比别人多一项
+            if list_temp.__len__() > i + 1:
+                list_temp = list_temp[0: i] + list_temp[i + 1:list_temp.__len__()]
+            else:
+                list_temp = list_temp[0: i]
+
         return list_temp,total,back #第一项为事实，第二项为总额，第三项为退还
 
 
