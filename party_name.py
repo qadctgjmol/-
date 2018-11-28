@@ -395,8 +395,7 @@ def separate(s):
 
 
 
-def bribery_crime(text_string):
-    lstm_server = lstm.lstm_server() # initialize the lstm server       # <-----------------
+def bribery_crime(text_string, lstm_server):
     list_temp = []
     text_string = re.sub('。、', '。', text_string)
     text_string = re.sub(';', '。', text_string)
@@ -505,6 +504,7 @@ if __name__ == '__main__':
     temp_str7=''
     temp_str8=''
     tmep_str9=''
-    content, total, back= bribery_crime(temp_str2)
+    lstm_server = lstm.lstm_server() # initialize the lstm server       # <-----------------
+    content, total, back= bribery_crime(temp_str2, lstm_server)
     get_info_list(content)
 
