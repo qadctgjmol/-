@@ -152,6 +152,8 @@ def distinguish(s):
     sum[1] = total[1]
     sum[2] = total[2]
     i = 0
+    if len(t3) == 0:
+        return store
     while i < len(t3):
         if len(t3[i][2]) >= 4:
             t3.insert(i, t3[i])
